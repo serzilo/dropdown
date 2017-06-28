@@ -1,0 +1,105 @@
+.dropdown {
+    border: 1px solid #c3c5cb;
+    border-radius: 5px;
+    position: relative;
+    display: inline-block;
+    width: 376px;
+    color: #000;
+    font-size: 14px;
+
+    &::before {
+        display: block;
+        position: absolute;
+        content: '';
+        border: 6px solid transparent;
+        border-top-color: #82848e;
+        top: 50%;
+        margin-top: -6px;
+        right: 25px;
+    }
+
+    &_top-suggest::before {
+        border-bottom-color: #82848e;
+        border-top-color: transparent;
+        margin-top: -11px;
+    }
+
+    &__label {
+        background: #fff;
+        padding: 0 10px;
+        position: absolute;
+        left: 10px;
+        pointer-events: none;
+        top: 50%;
+        z-index: 10;
+        transform: translate3d(0,-10px,0);
+        transition: all .15s cubic-bezier(.35,0,.25,1);
+    }
+
+    &__search-input {
+        box-sizing: border-box;
+        width: 100%;
+        border: 0;
+        outline: 0;
+        height: 62px;
+        padding: 0 60px 0 20px;
+        background: transparent;
+        font-size: 14px;
+        position: relative;
+        z-index: 10;
+
+        &_focused {
+
+            & + .dropdown__label {
+                transform: translate3d(0,-41px,0);
+            }
+        }
+    }
+
+    &__suggest {
+
+        &-list {
+            border: 1px solid #c3c5cb;
+            position: absolute;
+            left: -1px;
+            right: -1px;
+            background: #fff;
+
+            &_bottom {
+                top: 100%;
+            }
+
+            &_top {
+                bottom: 100%;
+            }
+
+             &_touch {
+                display: block;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                top: 100%;
+              }
+        }
+
+        &-item {
+            height: 64px;
+            line-height: 64px;
+            padding: 0 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+
+            &:hover {
+                background: #fff7c4;
+            }
+
+            &-highlighted {
+                color: #ff851c;
+            }
+        }
+    }
+}
